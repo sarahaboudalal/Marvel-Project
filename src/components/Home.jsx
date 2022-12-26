@@ -23,7 +23,7 @@ export default function Home() {
     handleFetch();
   }, [heroes.length]);
   return (
-    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-5">
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-y-6 py-10">
       {heroes.length > 0
         ? heroes.map((hero) => {
             return (
