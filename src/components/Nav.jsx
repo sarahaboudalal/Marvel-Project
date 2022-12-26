@@ -87,9 +87,9 @@ export default function Navbar() {
                       isActive ? 'underline text-reddish ' : ''
                     )
                   }
-                  to="creators"
+                  to="events"
                 >
-                  Creators
+                  Events
                 </NavLink>
               </li>
             </ul>

@@ -2,40 +2,42 @@ import React, { useEffect, useState } from 'react';
 import MD5 from 'crypto-js/md5';
 import Cards from './Cards';
 
-export default function Creators() {
-  const [creators, setCreators] = useState({ isLoading: true, creators: [] });
+export default function Events() {
+  const [events, setEvents] = useState({
+    isLoading: true,
+    events: [],
+  });
   let ts = Date.now().toString();
   const privateKey = process.env.REACT_APP_API_PRIV;
   const publicKey = process.env.REACT_APP_API_KEY;
   const hash = MD5(ts + privateKey + publicKey).toString();
   const base = process.env.REACT_APP_BASE_URL;
-  const url = `${base}/v1/public/creators?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const url = `${base}/v1/public/events?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const handleFetch = async () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setCreators({ isLoading: false, creators: data.data.results });
+        setEvents({ isLoading: false, events: data.data.results });
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    handleFetch();
-  }, [creators.isLoading]);
-
+    
+    useEffect(() => {
+        handleFetch()
+    },[events.isLoading])
   return (
     <div className="flex items-center justify-around">
-      {!creators.isLoading ? (
+      {!events.isLoading ? (
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
-          {creators.creators.map((creator) => {
+          {events.events.map((event) => {
             return (
               <Cards
-                key={creator.id}
+                key={event.id}
                 thumbnail={
-                  creator.thumbnail.path + '.' + creator.thumbnail.extension
+                  event.thumbnail.path + '.' + event.thumbnail.extension
                 }
-                name={creator.fullName}
+                name={event.title}
               />
             );
           })}
