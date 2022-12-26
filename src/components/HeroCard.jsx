@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function HeroCard({ thumbnail, name, description }) {
   return (
-    <div className="max-w-xs bg-whitish border border-gray-200 rounded-lg shadow-md">
+    <div className="max-w-xs bg-whitish border border-orange rounded-lg shadow-md">
       <img
-        className="rounded-t-lg overflow-hidden h-80 w-80"
+        className="rounded-t-lg overflow-hidden h-80 w-96"
         src={thumbnail}
         alt={name}
       />

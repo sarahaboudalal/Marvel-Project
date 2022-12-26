@@ -23,19 +23,24 @@ export default function Home() {
     handleFetch();
   }, [heroes.length]);
   return (
-    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-y-6 py-10">
-      {heroes.length > 0
-        ? heroes.map((hero) => {
-            return (
-              <HeroCard
-                key={hero.id}
-                thumbnail={hero.thumbnail.path + '.' + hero.thumbnail.extension}
-                name={hero.name}
-                description={hero.description}
-              />
-            );
-          })
-        : null}
+      <div>
+          <p className='text-center font-bold text-4xl text-maroon py-3'>Welcome To Marvel's Universe!</p>
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-y-6 py-10">
+        {heroes.length > 0
+          ? heroes.map((hero) => {
+              return (
+                <HeroCard
+                  key={hero.id}
+                  thumbnail={
+                    hero.thumbnail.path + '.' + hero.thumbnail.extension
+                  }
+                  name={hero.name}
+                  description={hero.description}
+                />
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 }

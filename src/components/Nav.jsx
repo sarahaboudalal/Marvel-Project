@@ -47,7 +47,7 @@ export default function Navbar() {
           >
             <ul
               className={[
-                'text-maroon font-bold md:text-xl bg-whitish dark:bg-greenish dark:md:bg-transparent md:bg-transparent text-2xl md:flex flex-col md:flex-row md:w-auto md:h-auto gap-x-5 h-screen sm:w-72 w-56',
+                'text-maroon font-bold md:text-xl bg-gradient-to-l from-orange to-whitish md:bg-transparent md:bg-none text-2xl md:flex flex-col md:flex-row md:w-auto md:h-auto gap-x-5 h-screen sm:w-72 w-56',
                 open
                   ? 'md:shadow-none shadow-xl md:relative absolute top-0 left-0 md:p-0 px-5 pt-8'
                   : 'left-[-700px] top-[96px] hidden',
