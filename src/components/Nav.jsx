@@ -63,7 +63,7 @@ export default function Navbar() {
                   }
                   to="/"
                 >
-                  Home
+                  Characters
                 </NavLink>
               </li>
               <li className="md:py-0 py-2">
@@ -77,6 +77,19 @@ export default function Navbar() {
                   to="comics"
                 >
                   Comics
+                </NavLink>
+              </li>
+              <li className="md:py-0 py-2">
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames(
+                      'cursor-pointer hover:text-orange duration-300 ',
+                      isActive ? 'underline text-reddish ' : ''
+                    )
+                  }
+                  to="creators"
+                >
+                  Creators
                 </NavLink>
               </li>
             </ul>

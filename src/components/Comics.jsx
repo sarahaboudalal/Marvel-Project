@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MD5 from 'crypto-js/md5';
-import ComicCard from './ComicCard';
+import Cards from './Cards';
 
 export default function Comics() {
   const [comics, setComics] = useState([]);
@@ -29,11 +29,12 @@ export default function Comics() {
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
           {comics.map((comic) => {
             return (
-              <ComicCard
+              <Cards
+                key={comic.id}
                 thumbnail={
                   comic.thumbnail.path + '.' + comic.thumbnail.extension
                 }
-                title={comic.title}
+                name={comic.title}
               />
             );
           })}

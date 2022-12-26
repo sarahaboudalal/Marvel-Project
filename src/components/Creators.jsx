@@ -2,39 +2,40 @@ import React, { useEffect, useState } from 'react';
 import MD5 from 'crypto-js/md5';
 import Cards from './Cards';
 
-export default function Home() {
-  const [heroes, setHeroes] = useState([]);
+export default function Creators() {
+  const [creators, setCreators] = useState({ isLoading: true, creators: [] });
   let ts = Date.now().toString();
   const privateKey = process.env.REACT_APP_API_PRIV;
   const publicKey = process.env.REACT_APP_API_KEY;
   const hash = MD5(ts + privateKey + publicKey).toString();
   const base = process.env.REACT_APP_BASE_URL;
-  const url = `${base}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const url = `${base}/v1/public/creators?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   const handleFetch = async () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setHeroes(data.data.results);
+      setCreators({ isLoading: false, creators: data.data.results });
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     handleFetch();
-  }, [heroes.length]);
+  }, [creators.isLoading]);
+
   return (
-    <div className="flex flex-col items-center justify-around">
-      <p className="text-center font-bold text-4xl text-maroon py-3">
-        Welcome To Marvel's Universe!
-      </p>
-      {heroes.length > 0 ? (
+    <div className="flex items-center justify-around">
+      {!creators.isLoading ? (
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
-          {heroes.map((hero) => {
+          {creators.creators.map((creator) => {
             return (
               <Cards
-                key={hero.id}
-                thumbnail={hero.thumbnail.path + '.' + hero.thumbnail.extension}
-                name={hero.name}
+                key={creator.id}
+                thumbnail={
+                  creator.thumbnail.path + '.' + creator.thumbnail.extension
+                }
+                name={creator.fullName}
               />
             );
           })}
