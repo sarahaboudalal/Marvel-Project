@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Navbar from './components/Nav';
 import Comics from './components/Comics';
 import Events from './components/Events';
+import Stories from './components/Stories';
+import Series from './components/Series';
 
 export default function App() {
   return (
@@ -12,7 +14,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/comics" element={<Comics />} />
-        <Route path='/events' element={ <Events/>} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/series" element={<Series />} />
       </Routes>
     </div>
   );

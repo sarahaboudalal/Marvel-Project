@@ -92,6 +92,32 @@ export default function Navbar() {
                   Events
                 </NavLink>
               </li>
+              <li className="md:py-0 py-2">
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames(
+                      'cursor-pointer hover:text-orange duration-300 ',
+                      isActive ? 'underline text-reddish ' : ''
+                    )
+                  }
+                  to="stories"
+                >
+                  Stories
+                </NavLink>
+              </li>
+              <li className="md:py-0 py-2">
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames(
+                      'cursor-pointer hover:text-orange duration-300 ',
+                      isActive ? 'underline text-reddish ' : ''
+                    )
+                  }
+                  to="series"
+                >
+                  Series
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
