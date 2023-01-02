@@ -29,20 +29,4 @@ export default function Comics() {
     </div>
   );
 }
-// {comics.length > 0 ? (
-//   <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
-//     {comics.map((comic) => {
-//       return (
-//         <Cards
-//           key={comic.id}
-//           thumbnail={
-//             comic.thumbnail.path + '.' + comic.thumbnail.extension
-//           }
-//           name={comic.title}
-//         />
-//       );
-//     })}
-//   </div>
-// ) : (
-//   <Loading/>
-// )}
+

@@ -8,38 +8,38 @@ const publicKey = process.env.REACT_APP_API_KEY;
 const hash = MD5(ts + privateKey + publicKey).toString();
 const base = process.env.REACT_APP_BASE_URL;
 
-export const fecthComics = createAsyncThunk('comic/fetchComics', () => {
-  const url = `${base}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+export const fetchSeries = createAsyncThunk('serie/fetchSeries', () => {
+  const url = `${base}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   return axios
     .get(url)
-    .then((response) => response.data.data.results)
-    .catch((error) => console.log(error));
+    .then((resp) => resp.data.data.results)
+    .catch((err) => console.log(err));
 });
 
 const initialState = {
   loading: false,
-  comics: [],
+  series: [],
   error: '',
 };
 
-const comicsSlice = createSlice({
-  name: 'comic',
+const seriesSlice = createSlice({
+  name: 'serie',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fecthComics.pending, (state) => {
-      state.loading = true;
+    builder.addCase(fetchSeries.pending, (state) => {
+        state.loading = true;
     });
-    builder.addCase(fecthComics.fulfilled, (state, action) => {
+    builder.addCase(fetchSeries.fulfilled, (state, action) => {
       state.loading = false;
-      state.comics = action.payload;
+      state.series = action.payload;
       state.error = '';
     });
-    builder.addCase(fecthComics.rejected, (state, action) => {
+    builder.addCase(fetchSeries.rejected, (state, action) => {
       state.loading = false;
-      state.comics = [];
+      state.series = [];
       state.error = action.error.message;
     });
   },
 });
 
-export default comicsSlice.reducer;
+export default seriesSlice.reducer

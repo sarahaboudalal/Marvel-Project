@@ -30,20 +30,3 @@ export default function Events() {
   );
 }
 
-// {!events.isLoading ? (
-//   <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
-//     {events.events.map((event) => {
-//       return (
-//         <Cards
-//           key={event.id}
-//           thumbnail={
-//             event.thumbnail.path + '.' + event.thumbnail.extension
-//           }
-//           name={event.title}
-//         />
-//       );
-//     })}
-//   </div>
-// ) : (
-//   <Loading/>
-// )}
