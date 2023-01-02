@@ -13,7 +13,7 @@ export default function Events() {
   }, [dispatch]);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex flex-col  items-center justify-center">
       {event.loading && <Loading />}
       <Grid>
         {event.events.map((event) => {
