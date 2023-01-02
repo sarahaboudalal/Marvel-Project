@@ -8,37 +8,38 @@ const publicKey = process.env.REACT_APP_API_KEY;
 const hash = MD5(ts + privateKey + publicKey).toString();
 const base = process.env.REACT_APP_BASE_URL;
 
-export const fetchHeroes = createAsyncThunk('hero/fetchHero', () => {
-  const url = `${base}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+export const fetchEvents = createAsyncThunk('event/fetchEvents', () => {
+  const url = `${base}/v1/public/events?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
   return axios
     .get(url)
     .then((response) => response.data.data.results)
-    .catch((err) => console.log(err));
+    .catch((error) => console.log(error));
 });
+
 const initialState = {
   loading: false,
-  heroes: [],
+  events: [],
   error: '',
 };
 
-const heroSlice = createSlice({
-  name: 'hero',
+const eventSlice = createSlice({
+  name: 'event',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchHeroes.pending, (state) => {
+    builder.addCase(fetchEvents.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchHeroes.fulfilled, (state, action) => {
+    builder.addCase(fetchEvents.fulfilled, (state, action) => {
       state.loading = false;
-      state.heroes = action.payload;
+      state.events = action.payload;
       state.error = '';
     });
-    builder.addCase(fetchHeroes.rejected, (state, action) => {
+    builder.addCase(fetchEvents.rejected, (state, action) => {
       state.loading = false;
-      state.heroes = [];
+      state.events = [];
       state.error = action.error.message;
     });
   },
 });
 
-export default heroSlice.reducer;
+export default eventSlice.reducer
