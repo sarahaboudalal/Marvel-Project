@@ -1,48 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import MD5 from 'crypto-js/md5';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchHeroes } from '../feautures/heroSlice';
 import Cards from './Cards';
+import Grid from './Grid';
 import Loading from './Loading';
 
 export default function Home() {
-  const [heroes, setHeroes] = useState([]);
-  let ts = Date.now().toString();
-  const privateKey = process.env.REACT_APP_API_PRIV;
-  const publicKey = process.env.REACT_APP_API_KEY;
-  const hash = MD5(ts + privateKey + publicKey).toString();
-  const base = process.env.REACT_APP_BASE_URL;
-  const url = `${base}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-  const handleFetch = async () => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setHeroes(data.data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const hero = useSelector((state) => state.hero);
+  const dispatch = useDispatch();
   useEffect(() => {
-    handleFetch();
-  }, [heroes.length]);
+    dispatch(fetchHeroes());
+  }, [dispatch]);
+
   return (
     <div className="flex flex-col items-center justify-around">
       <p className="text-center font-bold text-4xl text-maroon py-3">
         Welcome To Marvel's Universe!
       </p>
-      {heroes.length > 0 ? (
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-6 py-10">
-          {heroes.map((hero) => {
-            return (
-              <Cards
-                key={hero.id}
-                thumbnail={hero.thumbnail.path + '.' + hero.thumbnail.extension}
-                name={hero.name}
-              />
-            );
-          })}
-        </div>
-      ) : (
-       <Loading/>
-      )}
+      {hero.loading && <Loading />}
+      <Grid>
+        {hero.heroes.map((hero) => {
+          return (
+            <Cards
+              key={hero.id}
+              thumbnail={hero.thumbnail.path + '.' + hero.thumbnail.extension}
+              name={hero.name}
+            />
+          );
+        })}
+      </Grid>
     </div>
   );
 }
+
