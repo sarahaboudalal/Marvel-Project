@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fecthComics } from '../feautures/comicsSlice';
 import Cards from './Cards';
+import Flex from './Flex';
 import Grid from './Grid';
 import Loading from './Loading';
 
@@ -13,7 +14,7 @@ export default function Comics() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col  items-center justify-center">
+    <Flex>
       {comic.loading && <Loading />}
       <Grid>
         {comic.comics.map((comic) => {
@@ -26,7 +27,6 @@ export default function Comics() {
           );
         })}
       </Grid>
-    </div>
+    </Flex>
   );
 }
-

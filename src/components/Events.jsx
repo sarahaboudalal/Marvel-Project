@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchEvents } from '../feautures/eventsSlice';
 import Cards from './Cards';
+import Flex from './Flex';
 import Grid from './Grid';
 import Loading from './Loading';
 
@@ -13,7 +14,7 @@ export default function Events() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col  items-center justify-center">
+    <Flex>
       {event.loading && <Loading />}
       <Grid>
         {event.events.map((event) => {
@@ -26,7 +27,6 @@ export default function Events() {
           );
         })}
       </Grid>
-    </div>
+    </Flex>
   );
 }
-

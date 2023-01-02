@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchHeroes } from '../feautures/heroSlice';
 import Cards from './Cards';
+import Flex from './Flex';
 import Grid from './Grid';
 import Loading from './Loading';
 
@@ -13,7 +14,7 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col items-center justify-around">
+    <Flex>
       <p className="text-center font-bold text-4xl text-maroon py-3">
         Welcome To Marvel's Universe!
       </p>
@@ -29,7 +30,6 @@ export default function Home() {
           );
         })}
       </Grid>
-    </div>
+    </Flex>
   );
 }
-
