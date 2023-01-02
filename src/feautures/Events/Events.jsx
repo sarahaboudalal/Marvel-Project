@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchEvents } from '../feautures/eventsSlice';
-import Cards from './Cards';
-import Flex from './Flex';
-import Grid from './Grid';
-import Loading from './Loading';
+import { fetchEvents } from './eventsSlice';
+import Cards from '../../components/Cards';
+import Flex from '../../components/Flex';
+import Grid from '../../components/Grid';
+import Loading from '../../components/Loading';
 
 export default function Events() {
   const event = useSelector((state) => state.event);

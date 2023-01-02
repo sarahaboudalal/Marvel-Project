@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchHeroes } from '../feautures/heroSlice';
-import Cards from './Cards';
-import Flex from './Flex';
-import Grid from './Grid';
-import Loading from './Loading';
+import { fetchHeroes } from './heroSlice';
+import Cards from '../../components/Cards';
+import Flex from '../../components/Flex';
+import Grid from '../../components/Grid';
+import Loading from '../../components/Loading';
 
-export default function Home() {
+export default function Heroes() {
   const hero = useSelector((state) => state.hero);
   const dispatch = useDispatch();
   useEffect(() => {

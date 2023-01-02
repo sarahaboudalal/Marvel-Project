@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSeries } from '../feautures/seriesSlice';
-import Cards from './Cards';
-import Flex from './Flex';
-import Grid from './Grid';
-import Loading from './Loading';
+import { fetchSeries } from './seriesSlice';
+import Cards from '../../components/Cards';
+import Flex from '../../components/Flex';
+import Grid from '../../components/Grid';
+import Loading from '../../components/Loading';
 
 export default function Series() {
   const serie = useSelector((state) => state.serie);
