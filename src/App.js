@@ -6,6 +6,7 @@ import Comics from './feautures/Comics/Comics';
 import Events from './feautures/Events/Events';
 import Stories from './feautures/Stories/Stories';
 import Series from './feautures/Series/Series';
+import HeroPage from './feautures/Heroes/HeroPage';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Heroes />} />
+        <Route path='/character/:id' element={<HeroPage/>} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/events" element={<Events />} />
         <Route path="/stories" element={<Stories />} />

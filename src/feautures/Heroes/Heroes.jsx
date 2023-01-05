@@ -23,6 +23,7 @@ export default function Heroes() {
         {hero.heroes.map((hero) => {
           return (
             <Cards
+              link={`/character/${hero.id}`}
               key={hero.id}
               thumbnail={hero.thumbnail.path + '.' + hero.thumbnail.extension}
               name={hero.name}

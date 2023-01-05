@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Cards({ thumbnail, name }) {
+export default function Cards({ thumbnail, name, link }) {
   return (
     <div className="max-w-xs bg-whitish border border-orange rounded-lg shadow-md">
+      <Link to={link}>
       {thumbnail !== null ? (
         <img
           className="rounded-t-lg overflow-hidden h-80 w-96"
@@ -20,7 +22,8 @@ export default function Cards({ thumbnail, name }) {
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-maroon ">
           {name}
         </h5>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 }
